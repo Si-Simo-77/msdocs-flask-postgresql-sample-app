@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Réservation de Place au Stade</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .zone {
+            margin: 20px 0;
+        }
+        .row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        .seat {
+            width: 40px;
+            height: 40px;
+            background-color: #ddd;
+            border: 1px solid #999;
+            text-align: center;
+            line-height: 40px;
+            cursor: pointer;
+        }
+        .seat.selected {
+            background-color: #6c7ae0;
+            color: #fff;
+        }
+        form {
+            margin-top: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        .submit-btn {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+        .submit-btn:hover {
+            background-color: #218838;
+        }
+    </style>
+  <style>
+    /* Centrer le bouton de réservation */
+    .submit-btn {
+        display: block;
+        margin: 20px auto;
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        text-align: center;
+    }
+
+    .submit-btn:hover {
+        background-color: #45a049;
+    }
+</style>
+    <script>
+      function toggleSeatSelection(event) {
+          const seat = event.target;
+          if (seat.classList.contains('seat')) {
+              // Désélectionner toutes les places
+              document.querySelectorAll('.seat.selected').forEach(selectedSeat => {
+                  selectedSeat.classList.remove('selected');
+              });
+              // Sélectionner la place cliquée
+              seat.classList.add('selected');
+          }
+      }
+  </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Réservation de Place au Stade</h1>
+        <img src="photo.jpg" alt="Image du Stade" style="max-width:100%; height:auto; margin-bottom:20px;">
+      
+
+        <!-- Formulaire de réservation -->
+       <form id="reservation-form" action="/reserve" method="POST"> 
+            <h2>Informations Personnelles</h2>
+            <div class="form-group">
+                <label for="name">Nom :</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email :</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Téléphone :</label>
+                <input type="tel" id="phone" name="phone" required>
+            </div>
+            
+         
+      <!-- Zones et places -->
+        <div class="zone" id="zone-a">
+            <h2>Zone A</h2>
+            <div class="row" onclick="toggleSeatSelection(event)">
+                <div class="seat">1</div>
+                <div class="seat">2</div>
+                <div class="seat">3</div>
+                <div class="seat">4</div>
+                <div class="seat">5</div>
+            </div>
+            <div class="row" onclick="toggleSeatSelection(event)">
+                <div class="seat">6</div>
+                <div class="seat">7</div>
+                <div class="seat">8</div>
+                <div class="seat">9</div>
+                <div class="seat">10</div>
+            </div>
+            <div class="row" onclick="toggleSeatSelection(event)">
+                <div class="seat">11</div>
+                <div class="seat">12</div>
+                <div class="seat">13</div>
+                <div class="seat">14</div>
+                <div class="seat">15</div>
+            </div>
+        </div>
+
+        <div class="zone" id="zone-b">
+            <h2>Zone B</h2>
+            <div class="row" onclick="toggleSeatSelection(event)">
+                <div class="seat">1</div>
+                <div class="seat">2</div>
+                <div class="seat">3</div>
+                <div class="seat">4</div>
+                <div class="seat">5</div>
+            </div>
+            <div class="row" onclick="toggleSeatSelection(event)">
+                <div class="seat">6</div>
+                <div class="seat">7</div>
+                <div class="seat">8</div>
+                <div class="seat">9</div>
+                <div class="seat">10</div>
+            </div>
+            <div class="row" onclick="toggleSeatSelection(event)">
+                <div class="seat">11</div>
+                <div class="seat">12</div>
+                <div class="seat">13</div>
+                <div class="seat">14</div>
+                <div class="seat">15</div>
+            </div>
+        </div>
+        <button type="submit" class="submit-btn">Reserver</button>
+      </form> 
+    </div>
+</body>
+</html>
